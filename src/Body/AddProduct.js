@@ -48,3 +48,4 @@ class AddProduct extends Component{
         )
     }
 }
+export default AddProduct;

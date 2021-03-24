@@ -2,6 +2,7 @@ import { Component } from "react";
 import Register from './Register';
 import Login from './Login';
 import {Route} from 'react-router-dom';
+import AddProduct from "../Body/AddProduct";
 
 class Container extends Component{
     render(){
