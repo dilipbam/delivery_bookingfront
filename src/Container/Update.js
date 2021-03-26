@@ -10,18 +10,24 @@ class ProductUpdate extends Component{
     render(){
         return(
             <div>
+                <h1>Update Product</h1>
                 <form>
                     <p>
                         Product name
                         <input type="text" name="pprice" value={this.state.pprice} />
                     </p>
                     <p>
-                        Product name
+                        Product price
                         <input type="text" name="pname" value={this.state.pname} />
                     </p>
                     <p>
-                        Product name
+                        Product description
                         <input type="text" name="pdesc" value={this.state.pdesc} />
+                    </p>
+                    <p>
+                        <button onClick={this.send}>
+                            Update Product
+                        </button>
                     </p>
                 </form>
             </div>
@@ -29,4 +35,4 @@ class ProductUpdate extends Component{
     }
 }
 
-export default Update;
+export default ProductUpdate;
