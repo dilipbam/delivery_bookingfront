@@ -2,40 +2,83 @@ import {Component} from "react";
 import {Link} from 'react-router-dom';
 class Header extends Component{
     render(){
-        return(
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">Menu</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <Link class="nav-link" to="/">Home
-              <span class="sr-only">(current)</span>
-            </Link>
+      // alert(localStorage.getItem('token'))
+      if (localStorage.getItem('token') && localStorage.getItem('userType')==='Customer') {
+
+        var menu =
+
+        <ul className="navbar-nav ml-auto">
+          <li className="nav-item">
+            <Link className="nav-link" to="/insert">Add </Link>
           </li>
-          <li class="nav-item">
-            <Link class="nav-link" to="/about">About</Link>
+          <li className="nav-item">
+            <Link className="nav-link" to="/show">View Car</Link>
           </li>
-          <li class="nav-item">
-            <Link class="nav-link" to="/register">Register</Link>
-          </li>          
-          <li class="nav-item">
-            <Link class="nav-link" to="/login">Login</Link>
+          <li className="nav-item">
+            <Link className="nav-link" to="/adminViewBookings">View Bookings</Link>
           </li>
-          <li class="nav-item">
-            <Link class="nav-link" to="/addproduct">AddProduct</Link>
+          <li className="nav-item">
+            <Link className="nav-link" to="/viewCustomer">View Customer</Link>
           </li>
-          <li class="nav-item">
-            <Link class="nav-link" to="/update">Update</Link>
-          </li>
-          
+          <li className="nav-item">
+              <Link className="nav-link" to="/logout">Log out</Link>
+            </li>
         </ul>
-      </div>
-    </div>
-  </nav>
+
+      }
+      else if(localStorage.getItem('token') && localStorage.getItem('userType')==='Owner') {
+       var menu =
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item active">
+              <Link className="nav-link" to="/home">Home
+                        <span className="sr-only">(current)</span>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/about">About Us</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/services">Services</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/viewBookings">Bookings</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/profile">Profile</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/logout">Log out</Link>
+            </li>
+          </ul>
+      }
+          else {
+            var menu =
+    
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/about">About Us</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/register">Register</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/login">Login</Link>
+                </li>
+              </ul>
+      }
+        return(
+
+          <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div className="container">
+              <a className="navbar-brand" href="./home">TruckersNepal</a>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                  <span className="navbar-toggler-icon"></span>
+                </button>
+            <div className="collapse navbar-collapse" id="navbarResponsive">
+              {menu}
+            </div>
+            </div>
+            </nav>
         )
     }
 }

@@ -15,7 +15,18 @@ class Login extends Component{
     }
     submitLogin = (e)=>{
         e.preventDefault();
-        axios.post("http://localhost:90/")
+        axios.post("http://localhost:90/", this.state)
+        .then((response)=>{
+            console.log(response);
+            localStorage.setItem('token', response.data.token)
+
+            this.setState({
+                checkLogin : true
+            })
+        })
+        .catch((err)=>{
+            console.log(err.response)
+        })
     }
     render(){
         return(
