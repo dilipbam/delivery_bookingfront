@@ -18,17 +18,7 @@ class OwnerBookingView extends Component{
             .catch((err)=>{
                 console.log(err.response)}
             )
-        }
-        deleteBooking = (id) => {
-            axios.delete("http://localhost:90/booking/delete/" + id)
-                .then((response) => {
-                    console.log(response)
-                    this.componentDidMount()
-                })
-                .catch((err) => {
-                    console.log(err.response)
-                })
-        }
+            }
         render(){
         return(
             <div className="container-xl">

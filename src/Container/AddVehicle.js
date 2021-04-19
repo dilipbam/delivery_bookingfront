@@ -1,5 +1,6 @@
 import { Component } from "react";
 import axios from 'axios';
+import {FormControl, Radio, FormLabel, RadioGroup, FormControlLabel} from 'react';
 
 class AddVehicle extends Component{  
     state = {
@@ -47,7 +48,7 @@ class AddVehicle extends Component{
                             <div className="form-group">
                             <input type="text" name="vehicleNumber" className="form-control" placeholder="Enter Vehicle Number" value={this.state.VehicleNumber} onChange={(event)=>{this.setState({VehicleNumber: event.target.value})}} />
                             </div>
-                            <div className="form-group">
+                            {/* <div className="form-group">
                                 <select>
                                     {VehicleType.map(item=>(
                                         <option key={item.id} value={item.Type}>
@@ -55,8 +56,17 @@ class AddVehicle extends Component{
                                         </option>
                                     ))}
                                 </select>
-                            </div>
-                            
+                            </div> */}
+                            <FormControl component="fieldset">
+                                    <FormLabel component="legend">
+                                        Gender &nbsp;
+                                    </FormLabel>
+                                    <RadioGroup aria-label="vehicleType" name="vehilceType" value={this.value} onChange={this.handleChange} row name="VehicleType">
+                                        <FormControlLabel value="6 Wheeler" control={<Radio />} label="Female" />
+                                        <FormControlLabel value="10 Wheeler" control={<Radio />} label="Male" />
+                                        <FormControlLabel value="12 Wheeler" control={<Radio />} label="Other" />
+                                    </RadioGroup>
+                                </FormControl>
                             <div className="form-group">
                                 <input type="text" name="driverName" className="form-control" placeholder="Enter driver name" required="required" value={this.state.DriverName} onChange={(event) => { this.setState({DriverName: event.target.value }) }} />
                             </div>
