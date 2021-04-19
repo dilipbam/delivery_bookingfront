@@ -15,10 +15,12 @@ class Login extends Component{
     }
     submitLogin = (e)=>{
         e.preventDefault();
-        axios.post("http://localhost:90/", this.state)
+        axios.post("http://localhost:90/customer/login", this.state)
         .then((response)=>{
             console.log(response);
             localStorage.setItem('token', response.data.token)
+            localStorage.setItem('userType', response.data.userType)
+            localStorage.setItem('userName', response.data.userName)
 
             this.setState({
                 checkLogin : true
@@ -29,14 +31,36 @@ class Login extends Component{
         })
     }
     render(){
+        if(this.state.checkLogin===true){
+            //redirect to dashboard
+            window.location.href="/home"
+        }
         return(
-            <div>
-                <h1>Register</h1>
-                <form>
-                    <p>Username<input type="text" name="username"/></p>
-                    <p>Password<input type="password" name="password"/></p>
-                    <p> <button onClick={this.sendUserData}>Login</button></p>
-                </form>
+
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-md-4"></div>
+                    <div className="col-md-4">
+                        <div className="login-form">
+                            <form action="" method="post">
+                                <h4 className="modal-title">Login to Your Account</h4>
+                                <div className="form-group">
+                                    <input type="text" name="username" className="form-control" placeholder="Username" required="required" value={this.state.username} onChange={this.changeHandler} />
+                                </div>
+                                <div className="form-group">
+                                    <input type="password" name="password" className="form-control" placeholder="Password" required="required" value={this.state.password} onChange={this.changeHandler} />
+                                </div>
+                                <div className="form-group small clearfix">
+                                    <label className="form-check-label"><input type="checkbox" /> Remember me </label>
+                                    <a href="#" className="forgot-link">Forgot Password?</a>
+                                </div>
+                                <input type="submit" className="btn btn-primary btn-block btn-lg" value="Login" onClick={this.submitLogin} />
+                            </form>
+                            <div className="text-center small">Don't have an account? <a href="/register">Sign up</a></div>
+                        </div>
+                    </div>
+                    <div className="col-md-4"></div>
+                </div>
             </div>
         )
     }

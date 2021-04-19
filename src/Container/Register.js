@@ -42,8 +42,7 @@ class Register extends Component{
                         <div className="caption regis_heading_top">
                            <span className="logimax_sprite logi_company"></span>
                            <h3>Register as Customer</h3>
-                        </div>
-                        
+                        </div>                        
                      </div>
                   </a>
                </div>

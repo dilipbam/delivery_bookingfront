@@ -1,13 +1,32 @@
 import { Component } from "react";
 import { MDBRow, MDBCol, MDBCard, MDBCardBody, MDBIcon, MDBBtn, MDBInput } from "mdbreact";
-import {Map, Marker, InfoWindow} from 'google-map-react';
+import {Map, Marker, InfoWindow, GoogleApiWrapper} from 'google-map-react';
 
 class About extends Component{
+   /*  state={
+        showingInfoWindow:false,
+        activeMarker:{},
+        selectedPlace:{}
+    }
+    onMarkerClick = (props, maker, e)=>
+    this.setState({
+        selectedPlace:props,
+        activeMarker:marker,
+        showingInfoWindow:true
+    });
+
+    onClose = props => {
+        if(this.state.showingInfoWindow){
+            this.setState({
+                showingInfoWindow: false,
+                activeMarker:null
+            });
+        }
+    }; */
 render(){
-    const mystyle = {
-        fontSize: "58px", 
-        textTransform: "none",
-        letterSpacing: "0px"
+    const mapStyles = {
+        width: "100%",
+        height: "10%" 
       };
     return(
         <div className="container">
@@ -31,6 +50,32 @@ render(){
                                 id="map-container"
                                 className="rounded z-depth-1-half map-container"
                                 style={{ height: "200px" }}>
+                                    {/* <Map
+                                        title = "This is a unique title"
+                                        width="100%"
+                                        height="10%"
+                                        frameborder ="0"
+                                        google={this.props.google}
+                                        zoom={15}
+                                        style={{mapStyles}}
+                                        initialCenter={
+                                            {
+                                                lat: 27.706087,
+                                                lng: 85.3274373
+                                            }
+                                        }
+                                    >
+                                    <Marker onClick={this.onMarkerClick}
+                                        name={'Car Rentals Company, Dillibazar, Kathmandu'} />
+                                    <InfoWindow
+                                    marker={this.state.activeMarker}
+                                    visible={this.state.showingInfoWindow}
+                                    onClose={this.onClose}>
+                                    <div>
+                                        <h4>{this.state.selectedPlace.name}</h4>
+                                    </div>
+                                    </InfoWindow>
+                                    </Map> */}
                                 
                             </div>
                             <br />
@@ -42,4 +87,6 @@ render(){
             </div>
     )};
 }
-export default About;
+export default/*  GoogleApiWrapper({
+    apiKey:'AIzaSyCSLkd6ImcGFWFEmO2LKR2k4fsV51mn9sw'
+}) */(About);
