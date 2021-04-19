@@ -14,7 +14,7 @@ class OwnerSignup extends Component{
     sendUserData = (e) =>{
         e.preventDefault();
         const data={
-            FirstName : this.state.OwnerName,
+            FirstName : this.state.FirstName,
             LastName  : this.state.LastName,
             UserName : this.state.UserName,
             Password : this.state.Password,
@@ -38,7 +38,7 @@ class OwnerSignup extends Component{
                         <div className="login-form">
 
                             <form action="" method="post">
-                                <h4 className="modal-title">SignUp to create new account as Owner</h4>
+                                <h4 className="modal-title">SignUp to create new Owner account</h4>
                                 <div className="form-group">
                                 <input type="text" name="firstName" className="form-control" placeholder="First name" value={this.state.FirstName} onChange={(event)=>{this.setState({FirstName: event.target.value})}} />
                                 </div>

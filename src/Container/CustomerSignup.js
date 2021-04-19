@@ -32,49 +32,44 @@ class CustomerSignup extends Component{
     }
     render(){
         return(
-            <form>
-                <h1>Register</h1>
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-md-4"></div>
+                    <div className="col-md-4">
+                        <div className="login-form">
 
-                <div className="form-group">
-                    <label>First Name</label>
-                    <input type="text" name="firstName" className="form-control" placeholder="First name" value={this.state.firstName} onChange={(event)=>{this.setState({firstName: event.target.value})}}/>
+                            <form action="" method="post">
+                                <h4 className="modal-title">SignUp to create new Customer account</h4>
+                                <div className="form-group">
+                                    <input type="text" name="firstName" className="form-control" placeholder="Enter first name" required="required" value={this.state.firstName} onChange={(event) => { this.setState({ firstName: event.target.value }) }} />
+                                </div>
+                                <div className="form-group">
+                                    <input type="text" name="middleName" className="form-control" placeholder="Enter middle name" required="required" value={this.state.middleName} onChange={(event) => { this.setState({ middleName: event.target.value }) }} />
+                                </div>
+                                <div className="form-group">
+                                    <input type="text" name="lastName" className="form-control" placeholder="Enter last name" required="required" value={this.state.lastName} onChange={(event) => { this.setState({ lastName: event.target.value }) }} />
+                                </div>
+                                <div className="form-group">
+                                    <input type="text" name="username" className="form-control" placeholder="Enter username" required="required" value={this.state.userName} onChange={(event) => { this.setState({ userName: event.target.value }) }} />
+                                </div>
+                                <div className="form-group">
+                                    <input type="password" name="password" className="form-control" placeholder="Enter password" required="required" value={this.state.password} onChange={(event) => { this.setState({ password: event.target.value }) }} />
+                                </div>
+                                <div className="form-group">
+                                    <input type="text" name="email" className="form-control" placeholder="Enter email" required="required" value={this.state.email} onChange={(event) => { this.setState({ email: event.target.value }) }} />
+                                </div>
+                                <div className="form-group">
+                                    <input type="text" name="contact" className="form-control" placeholder="Enter contact" required="required" value={this.state.contact} onChange={(event) => { this.setState({ contact: event.target.value }) }} />
+                                </div>
+                                <input type="submit" className="btn btn-primary btn-block btn-lg" value="SignUp" onClick={this.sendUserData} />
+                            </form>
+                            
+                            <div className="text-center small">Already have an account? <a href="/login">Login</a></div>
+                        </div>
+                        <div className="col-md-4"></div>
+                    </div>
                 </div>
-
-                <div className="form-group">
-                    <label>Middle Name</label>
-                    <input type="text" name="middleName" className="form-control" placeholder="Middle name" value={this.state.middleName} onChange={(event)=>{this.setState({middleName: event.target.value})}} />
-                </div>
-
-                <div className="form-group">
-                    <label>Last Name</label>
-                    <input type="email" name="lastName" className="form-control" placeholder="Last name" value={this.state.lastName} onChange={(event)=>{this.setState({lastName: event.target.value})}}/>
-                </div>
-
-                <div className="form-group">
-                    <label>username</label>
-                    <input type="text" name="userName" className="form-control" placeholder="Enter username" value={this.state.userName} onChange={(event)=>{this.setState({userName: event.target.value})}} />
-                </div>
-
-                <div className="form-group">
-                    <label>Password</label>
-                    <input type="password" name="password" className="form-control" placeholder="Enter password" value={this.state.password} onChange={(event)=>{this.setState({password: event.target.value})}} />
-                </div>
-
-                <div className="form-group">
-                    <label>Email</label>
-                    <input type="text" name="email" className="form-control" placeholder="Enter email" value={this.state.email} onChange={(event)=>{this.setState({email: event.target.value})}} />
-                </div>
-
-                <div className="form-group">
-                    <label>Contact</label>
-                    <input type="text" name="contact" className="form-control" placeholder="Enter contact" value={this.state.contact} onChange={(event)=>{this.setState({contact: event.target.value})}} />
-                </div>
-
-                <button type="submit" className="btn btn-dark btn-lg btn-block" onClick={this.sendUserData}>Register</button>
-                <p className="forgot-password text-right">
-                    Already registered <a href="./SignIn">log in?</a>
-                </p>
-            </form>            
+            </div>            
         )
     }
 }
