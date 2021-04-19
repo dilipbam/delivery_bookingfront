@@ -10,7 +10,7 @@ import OwnerSignup from "./OwnerSignup";
 import OwnerBookingView from "./OwnerBookingView";
 import About from "./About";
 import Homepage from "./Homepage";
-import CoustomerDashboard from "./CustomerDashboard";
+import CustomerBookingView from "./CustomerBookingView";
 import CustomerProfile from "./CustomerProfile";
 import AddVehicle from "./AddVehicle";
 import SearchVehicle from "./SearchVehicle";
@@ -32,7 +32,7 @@ class Container extends Component{
                     <Route path='/CustomerSignup' component={CustomerSignup}/>
                     <Route path='/OwnerSignup' component={OwnerSignup}/>
                     <Route path='/ownerBooking' component={OwnerBookingView}/>
-                    <Route path='/customerDashboard' component={CoustomerDashboard}/>
+                    <Route path='/CustomerBookingView' component={CustomerBookingView}/>
                     <Route path='/About' component={About}/>
                     <Route path='/addVehicle' component={AddVehicle}/>
                     <Route path='/bookingForm' component={BookingForm}/>
