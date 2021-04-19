@@ -81,7 +81,7 @@ class AddVehicle extends Component{
                             </div>
                         </form>
                         
-                        <div className="text-center small">Already have an account? <a href="/login">Login</a></div>
+                        <div className="text-center small">Already have an account? <a href="/login">Submit</a></div>
                     </div>
                     <div className="col-md-4"></div>
                 </div>

@@ -5,7 +5,6 @@ import Login from './Login';
 import {Route} from 'react-router-dom';
 import Register from "./Register";
 import Logout from "./Logout";
-import SignIn from "./SignIn";
 import CustomerSignup from "./CustomerSignup";
 import OwnerSignup from "./OwnerSignup";
 import OwnerBookingView from "./OwnerBookingView";
@@ -14,7 +13,7 @@ import Homepage from "./Homepage";
 import CoustomerDashboard from "./CustomerDashboard";
 import CustomerProfile from "./CustomerProfile";
 import AddVehicle from "./AddVehicle";
-
+import SearchVehicle from "./SearchVehicle";
 
 class Container extends Component{
     render(){
@@ -27,7 +26,7 @@ class Container extends Component{
                     <Route path='/ownerRegister' component={OwnerRegister}/>
                     <Route path='/login' component={Login}/>
                     <Route path='/logout' component={Logout}/>  
-                    <Route path='/signIn' component={SignIn}/>
+                    <Route path='/searchVehicle' component={SearchVehicle}/>
                     <Route path='/customerProfile' component={CustomerProfile}/>
                     <Route path='/CustomerSignup' component={CustomerSignup}/>
                     <Route path='/OwnerSignup' component={OwnerSignup}/>
