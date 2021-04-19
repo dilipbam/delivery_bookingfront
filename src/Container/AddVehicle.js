@@ -1,16 +1,16 @@
 import { Component } from "react";
 import axios from 'axios';
 
-class AddVehicle extends Component{
+class AddVehicle extends Component{  
     state = {
-        VehicleName : VehicleName,
-        VehicleNumber : VehicleNumber,
-        DrivingLicense : DrivingLicense,
-        DriverName : DriverName,
-        Capacity : Capacity,
-        Rate : Rate,
-        Type : Type
-    }
+        VehicleName : "",
+        VehicleNumber : "",
+        DrivingLicense : "",
+        DriverName : "",
+        Capacity : "",
+        Rate : "",
+        Type : ""
+    }    
     sendUserData = (e) =>{
         e.preventDefault();
         const data={
@@ -29,8 +29,9 @@ class AddVehicle extends Component{
         .catch(error=>{
             console.log(error);
         });
-    }
+    } 
     render(){
+        const VehicleType = require("./VehicleType.json")
         return(
             <div className="container-fluid">
             <div className="row">
@@ -47,12 +48,15 @@ class AddVehicle extends Component{
                             <input type="text" name="vehicleNumber" className="form-control" placeholder="Enter Vehicle Number" value={this.state.VehicleNumber} onChange={(event)=>{this.setState({VehicleNumber: event.target.value})}} />
                             </div>
                             <div className="form-group">
-                            <DropdownButton id="dropdown-item-button" title="Dropdown button">
-                                <Dropdown.ItemText>Select Vehicle Type</Dropdown.ItemText>
-                                <Dropdown.Item as="button">6 Wheeler Truck</Dropdown.Item>
-                                <Dropdown.Item as="button">10 Wheeler Truck</Dropdown.Item>
-                                <Dropdown.Item as="button">12 Wheeler Truck</Dropdown.Item>
-                            </DropdownButton>
+                                <select>
+                                    {VehicleType.map(item=>(
+                                        <option key={item.id} value={item.Type}>
+                                            {item.Type}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            
                             <div className="form-group">
                                 <input type="text" name="driverName" className="form-control" placeholder="Enter driver name" required="required" value={this.state.DriverName} onChange={(event) => { this.setState({DriverName: event.target.value }) }} />
                             </div>
@@ -62,6 +66,7 @@ class AddVehicle extends Component{
                             <div className="form-group">
                                 <input type="text" name="rate" className="form-control" placeholder="Enter Rate" required="required" value={this.state.Rate} onChange={(event) => { this.setState({Rate: event.target.value }) }} />
                             </div>
+                            <div>
                             <input type="submit" className="btn btn-primary btn-block btn-lg" value="SignUp" onClick={this.sendUserData} />
                             </div>
                         </form>
