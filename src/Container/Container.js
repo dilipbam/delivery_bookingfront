@@ -14,6 +14,7 @@ import CoustomerDashboard from "./CustomerDashboard";
 import CustomerProfile from "./CustomerProfile";
 import AddVehicle from "./AddVehicle";
 import SearchVehicle from "./SearchVehicle";
+import BookingForm from "./BookingForm";
 
 class Container extends Component{
     render(){
@@ -34,6 +35,7 @@ class Container extends Component{
                     <Route path='/customerDashboard' component={CoustomerDashboard}/>
                     <Route path='/About' component={About}/>
                     <Route path='/addVehicle' component={AddVehicle}/>
+                    <Route path='/bookingForm' component={BookingForm}/>
                     {/*register vanne link aayo vane Register component call gar.*/}
                 </div>
             </div>
