@@ -1,7 +1,7 @@
 import {Component} from "react";
 import ReactRoundedImage from "react-rounded-image";
 
-class Profile extends Component{
+class CustomerProfile extends Component{
     render(){
         return(
             <div className="container-fluid">
@@ -41,4 +41,4 @@ class Profile extends Component{
         )
     }
 }
-export default Profile;
+export default CustomerProfile;

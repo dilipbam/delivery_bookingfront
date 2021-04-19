@@ -12,7 +12,7 @@ import Background from "./Background";
 import About from "./About";
 import Homepage from "./Homepage";
 import CoustomerDashboard from "./CustomerDashboard";
-import Profile from "./Profile";
+import CustomerProfile from "./CustomerProfile";
 
 class Container extends Component{
     render(){
@@ -26,7 +26,7 @@ class Container extends Component{
                     <Route path='/login' component={Login}/>
                     <Route path='/logout' component={Logout}/>  
                     <Route path='/signIn' component={SignIn}/>
-                    <Route path='/profile' component={Profile}/>
+                    <Route path='/customerProfile' component={CustomerProfile}/>
                     <Route path='/CustomerSignup' component={CustomerSignup}/>
                     <Route path='/OwnerSignup' component={OwnerSignup}/>
                     <Route path='/Background' component={Background}/>
