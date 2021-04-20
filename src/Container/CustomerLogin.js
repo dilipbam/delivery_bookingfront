@@ -21,7 +21,7 @@ class CustomerLogin extends Component{
             .then((response)=>{
                 console.log(response);
                 localStorage.setItem('token', response.data.token)
-                localStorage.setItem('userType', response.data.userType)            
+                localStorage.setItem('UserType', response.data.UserType)            
     
                 this.setState({
                     checkLogin : true,

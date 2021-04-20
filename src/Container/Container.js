@@ -18,6 +18,8 @@ import SearchVehicle from "./SearchVehicle";
 import BookingForm from "./BookingForm";
 import { Form } from "reactstrap";
 import OwnerLogin from "./OwnerLogin";
+import LoginPage from "./LoginPage";
+
 
 class Container extends Component{
     render(){
@@ -40,6 +42,7 @@ class Container extends Component{
                     <Route path='/About' component={About}/>
                     <Route path='/addVehicle' component={AddVehicle}/>
                     <Route path='/bookingForm' component={BookingForm}/>
+                    <Route path='/loginPage' component={LoginPage}/>
                     {/*register vanne link aayo vane Register component call gar.*/}
                 </div>
             </div>

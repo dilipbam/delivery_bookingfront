@@ -3,7 +3,7 @@ import axios from 'axios';
 
 class OwnerLogin extends Component{
     state={
-        username:"",
+        userName:"",
         password:"",
         checkLogin:false
         
@@ -21,7 +21,7 @@ class OwnerLogin extends Component{
             .then((response)=>{
                 console.log(response);
                 localStorage.setItem('token', response.data.token)
-                localStorage.setItem('userType', response.data.userType)            
+                localStorage.setItem('UserType', response.data.UserType)            
     
                 this.setState({
                     checkLogin : true,
@@ -53,7 +53,7 @@ class OwnerLogin extends Component{
                             <form action="" method="post">
                                 <h4 className="modal-title">Login to Your Account</h4>
                                 <div className="form-group">
-                                    <input type="text" name="username" className="form-control" placeholder="Username" required="required" value={this.state.username} onChange={this.changeHandler} />
+                                    <input type="text" name="userName" className="form-control" placeholder="Username" required="required" value={this.state.userName} onChange={this.changeHandler} />
                                 </div>
                                 <div className="form-group">
                                     <input type="password" name="password" className="form-control" placeholder="Password" required="required" value={this.state.password} onChange={this.changeHandler} />

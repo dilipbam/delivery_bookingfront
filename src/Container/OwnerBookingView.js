@@ -1,24 +1,89 @@
-import {Component} from "react";
 import axios from 'axios';
+import { data } from 'jquery';
+import { React, useEffect, useState } from 'react';
+import GetOwnerBooking from './GetOwnerBooking';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faHeartbeat, faBookOpen, faEdit, faTrash, faTicketAlt } from '@fortawesome/fontawesome-free/free-solid-svg-icons';
+
+export default function GetOwnerBookings() {
+    const [bookingDetails, setBookingHistory] = useState([]);
+
+
+useEffect(() => {
+    axios.get("http://localhost:90/getBookings")
+        .then((response => {
+            console.log('response', response);
+            setBookingHistory(response.data.bookingDetails);
+        }));
+}, []);
+
+return (
+    <div>
+        {
+            console.log("GetOwnerBooking", bookingDetails)
+        }
+        <div className="BookingHistory">
+            <span className="font-bold ml-800x fs-20">
+              
+                <label className ="fs-20">Owner Booking History</label>
+            
+            </span>
+            {
+                bookingDetails.length > 0 &&
+                (bookingDetails || []).map((item, index) => (
+                    <div key={index}>
+                
+                        <GetOwnerBooking item ={item} index = {index} />
+                    </div>
+                ))
+            }
+        </div>
+        {
+            bookingDetails.length == 0 &&
+            <span className="ml-750x fs-30">No Booking History</span>
+        }
+    </div>
+)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* import {Component, useEffect} from "react";
+import axios from 'axios';
+import setData from 'react';
 
 class OwnerBookingView extends Component{
-    
+
         state={
-            ownerBookings:[],
+            ownerBooking:[],
         }
         componentDidMount(){
             axios.get("http://localhost:90/getBookings")
             .then((alldata)=>{
-                console.log(alldata)
+                console.log("alldata", alldata)
 
                 this.state({
-                    ownerBookings:alldata.data.data
+                    ownerBooking:alldata.data.bookingDetais
                 })
-            })        
+            })
             .catch((err)=>{
                 console.log(err.response)}
             )
             }
+
         render(){
         return(
             <div className="container-xl">
@@ -39,26 +104,28 @@ class OwnerBookingView extends Component{
                                     <th>Pick Location</th>
                                     <th>Drop Location</th>
                                     <th>Phone</th>
-                                    <th>Date</th>                                
+                                    <th>Date</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
-                                    //loop launa .map
-                                    this.state.ownerBookings.map((ownerBookings) => {
+
+                                    (this.state.ownerBooking || []).map((ownerBooking) => {
+
                                         return (
                                             <tr>
-                                                <td>{ownerBookings.UserName}</td>
-                                                <td>{ownerBookings.VehicleNumber}</td>
-                                                <td>{ownerBookings.DrivingLicense}</td>
-                                                <td>{ownerBookings.DivingName}</td>
-                                                <td>{ownerBookings.Capacity}</td>
-                                                <td>{ownerBookings.Rate}</td>
-                                                <td>{ownerBookings.Type}</td>
-                                                <td>{ownerBookings.PickLocation}</td>
-                                                <td>{ownerBookings.DropLocation}</td>
-                                                <td>{ownerBookings.Phone}</td>
-                                                <td>{ownerBookings.Date}</td>
+                                                <td>{ownerBooking.UserName}</td>
+                                                <td>{ownerBooking.VehicleName}</td>
+                                                <td>{ownerBooking.VehicleNumber}</td>
+                                                <td>{ownerBooking.DrivingLicense}</td>
+                                                <td>{ownerBooking.DrivingName}</td>
+                                                <td>{ownerBooking.Capacity}</td>
+                                                <td>{ownerBooking.Rate}</td>
+                                                <td>{ownerBooking.Type}</td>
+                                                <td>{ownerBooking.PickLocation}</td>
+                                                <td>{ownerBooking.DeliverLocation}</td>
+                                                <td>{ownerBooking.Phone}</td>
+                                                <td>{ownerBooking.Date}</td>
                                             </tr>
                                         )
                                     })
@@ -73,4 +140,4 @@ class OwnerBookingView extends Component{
     }
 }
 
-export default OwnerBookingView;
+export default OwnerBookingView; */
