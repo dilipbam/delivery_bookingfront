@@ -1,39 +1,43 @@
-import { Component } from "react";
+import { Component, useState, useEffect } from "react";
 import axios from 'axios';
-import {FormControl, Radio, FormLabel, RadioGroup, FormControlLabel} from 'react';
+import { FormControl, Radio, FormLabel, RadioGroup, FormControlLabel } from 'react';
+import { data, event } from "jquery";
 
-class AddVehicle extends Component{  
-    state = {
-        VehicleName : "",
-        VehicleNumber : "",
-        DrivingLicense : "",
-        DrivingName : "",
-        Capacity : "",
-        Rate : "",
-        Type : ""
-    }    
-    sendUserData = (e) =>{
-        e.preventDefault();
-        const data={
-            VehicleName : this.state.VehicleName,
-            VehicleNumber : this.state.VehicleNumber,
-            DrivingLicense : this.state.DrivingLicense,
-            DrivingName : this.state.DrivingName,
-            Capacity : this.state.Capacity,
-            Rate : this.state.Rate,
-            Type : this.state.Type
-        }
+export default function AddVehicle() {
+    const [VehicleName, setVehicleName] = useState("")
+    const [VehicleNumber, setVehicleNumber] = useState("")
+    const [DrivingLicense, setDrivingLicense] = useState("")
+    const [DrivingName, setDrivingName] = useState("")
+    const [Capacity, setCapacity] = useState("")
+    const [Rate, setRate] = useState("")
+    const [Type, setType] = useState("")
+
+    const data = {
+
+        VehicleName : VehicleName,
+        VehicleNumber : VehicleNumber,
+        DrivingLicense : DrivingLicense,
+        DrivingName : DrivingName,
+        Capacity : Capacity,
+        Rate : Rate,
+        Type :Type
+    }
+
+   const sendUserData = () => {
+
         axios.post("http://localhost:90/AddVehicle", data)
-        .then(response=>{
-            console.log(response)
-        })
-        .catch(error=>{
-            console.log(error);
-        });
-    } 
-    render(){
-        return(
-            <div className="container-fluid">
+            .then(response => {
+                console.log(response)
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
+
+    
+
+    return (
+        <div className="container-fluid">
             <div className="row">
                 <div className="col-md-4"></div>
                 <div className="col-md-4">
@@ -42,57 +46,44 @@ class AddVehicle extends Component{
                         <form >
                             <h4 className="modal-title">add your vehicle details here.</h4>
                             <div className="form-group">
-                            <input type="text" name="VehicleName" className="form-control" placeholder="Enter Vehicle name" value={this.state.VehicleName} onChange={(event)=>{this.setState({VehicleName: event.target.value})}} />
+                                <input type="text" name="VehicleName" className="form-control" placeholder="Enter Vehicle name" value={VehicleName} onChange={(event) => {return(setVehicleName(event.target.value)) }} />
                             </div>
                             <div className="form-group">
-                            <input type="text" name="VehicleNumber" className="form-control" placeholder="Enter Vehicle Number" value={this.state.VehicleNumber} onChange={(event)=>{this.setState({VehicleNumber: event.target.value})}} />
+                                <input type="text" name="VehicleNumber" className="form-control" placeholder="Enter Vehicle Number" value={VehicleNumber} onChange={(event) => {return(setVehicleNumber(event.target.value)) }}/>
                             </div>
                             <div><p>Select your Vehicle type</p></div>
-                            {/* <div className="radio-buttons">
+                            <div className="radio-buttons">
                                 6 Wheeler
                                 <input
                                     id="type"
-                                    value="6 Wheeler"
+                                    value={Type}
                                     name="Type"
                                     type="radio"
-                                    onChange={this.state.Type}
+                                    onChange={(event)=> {return setType(event.target.value)}}
                                 />
-                                10 Wheeler<input id="type" value="10 Wheeler" name="Type" type="radio" onChange={this.state.Type}/>
-                                12 Wheeler<input id="type" value="12 Wheeler" name="Type" type="radio" onChange={this.state.Type}/>
-                            </div> */}
-                            {/* <FormControl component="fieldset">
-                                    <FormLabel component="legend">
-                                        Gender &nbsp;
-                                    </FormLabel>
-                                    <RadioGroup aria-label="VehicleType" name="VehilceType" value={this.value} onChange={this.handleChange} row name="VehicleType">
-                                        <FormControlLabel value="6 Wheeler" control={<Radio />} label="Female" />
-                                        <FormControlLabel value="10 Wheeler" control={<Radio />} label="Male" />
-                                        <FormControlLabel value="12 Wheeler" control={<Radio />} label="Other" />
-                                    </RadioGroup>
-                                </FormControl> */}
-                                <div className="form-group">
-                                <input type="text" name="DrivingLicense" className="form-control" placeholder="Enter Driving License"  value={this.state.DrivingLicense} onChange={(event) => { this.setState({DrivingLicense: event.target.value }) }} />
+                                10 Wheeler<input id="type" value={Type} name="Type" type="radio" onChange={(event)=> {return setType(event.target.value)}} />
+                                12 Wheeler<input id="type" value={Type} name="Type" type="radio" onChange={(event)=> {return setType(event.target.value)}}/>
+                            </div>                            
+                            <div className="form-group">
+                                <input type="text" name="DrivingLicense" className="form-control" placeholder="Enter Driving License" value={DrivingLicense} onChange={(event) => {return(setDrivingLicense(event.target.value)) }}/>
                             </div>
                             <div className="form-group">
-                                <input type="text" name="DrivingName" className="form-control" placeholder="Enter driver name"  value={this.state.DrivingName} onChange={(event) => { this.setState({DrivingName: event.target.value }) }} />
+                                <input type="text" name="DrivingName" className="form-control" placeholder="Enter driver name" value={DrivingName} onChange={(event) => {return(setDrivingName(event.target.value)) }}/>
                             </div>
                             <div className="form-group">
-                                <input type="text" name="Capacity" className="form-control" placeholder="Enter your Capacity"  value={this.state.Capacity} onChange={(event) => { this.setState({Capacity: event.target.value }) }} />
+                                <input type="text" name="Capacity" className="form-control" placeholder="Enter your Capacity" value={Capacity} onChange={(event) => {return(setCapacity(event.target.value)) }} />
                             </div>
                             <div className="form-group">
-                                <input type="text" name="Rate" className="form-control" placeholder="Enter Rate" value={this.state.Rate} onChange={(event) => { this.setState({Rate: event.target.value }) }} />
+                                <input type="text" name="Rate" className="form-control" placeholder="Enter Rate" value={Rate} onChange={(event) => {return(setRate(event.target.value)) }} />
                             </div>
                             <div>
-                            <input type="submit" className="btn btn-primary btn-block btn-lg" value="Add Truck" onClick={this.sendUserData} />
+                                <input type="submit" className="btn btn-primary btn-block btn-lg" value="Add Truck" onClick={sendUserData} />
                             </div>
                         </form>
                     </div>
                     <div className="col-md-4"></div>
                 </div>
             </div>
-        </div>  
-        )
-    }
+        </div>
+    )
 }
-
-export default AddVehicle;

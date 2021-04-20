@@ -1,76 +1,47 @@
-import {Component} from "react";
 import axios from 'axios';
+import { data } from 'jquery';
+import { React, useEffect, useState } from 'react';
+import GetVehicleToBook from './GetVehicleToBook';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faHeartbeat, faBookOpen, faEdit, faTrash, faTicketAlt } from '@fortawesome/fontawesome-free/free-solid-svg-icons';
 
-class CustomerBookingView extends Component{
-    
-        state={
-            customerBooking:[],
+export default function GetVehicleToBooks() {
+    const [vehicleDetails, setVehicleDetails] = useState([]);
+
+
+useEffect(() => {
+    axios.get("http://localhost:90/getVehicle")
+        .then((response => {
+            console.log('response', response);
+            setVehicleDetails(response.data.vehicleDetails);
+        }));
+}, []);
+
+return (
+    <div>
+        {
+            console.log("GetVehicleToBook", vehicleDetails)
         }
-        componentDidMount(){
-            axios.get("http://localhost:90/getBooking")
-            .then((alldata)=>{
-                console.log(alldata)
-
-                this.state({
-                    customerBooking:alldata.data.data
-                })
-            })        
-            .catch((err)=>{
-                console.log(err.response)}
-            )
-            }
-        render(){
-        return(
-            <div className="container-xl">
-                <div className="table-responsive">
-                    <div className="table-wrapper">
-                        <h3 className="text-center booking-form-title">Bookings!!</h3>
-                        <table className="table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th>User Name</th>
-                                    <th>Vehicle Name</th>
-                                    <th>Vehicle Number</th>
-                                    <th>Driving License</th>
-                                    <th>Driver Name</th>
-                                    <th>Capacity</th>
-                                    <th>Rate</th>
-                                    <th>Type</th>
-                                    <th>Pick Location</th>
-                                    <th>Drop Location</th>
-                                    <th>Phone</th>
-                                    <th>Date</th>                                
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    //loop launa .map
-                                    this.state.customerBooking.map((customerBooking) => {
-                                        return (
-                                            <tr>
-                                                <td>{customerBooking.UserName}</td>
-                                                <td>{customerBooking.VehicleNumber}</td>
-                                                <td>{customerBooking.DrivingLicense}</td>
-                                                <td>{customerBooking.DivingName}</td>
-                                                <td>{customerBooking.Capacity}</td>
-                                                <td>{customerBooking.Rate}</td>
-                                                <td>{customerBooking.Type}</td>
-                                                <td>{customerBooking.PickLocation}</td>
-                                                <td>{customerBooking.DropLocation}</td>
-                                                <td>{customerBooking.Phone}</td>
-                                                <td>{customerBooking.Date}</td>
-                                            </tr>
-                                        )
-                                    })
-                                }
-                            </tbody>
-                        </table>
-
+        <div className="GetVehicle">
+            <span className="font-bold ml-800x fs-20">
+              
+                <label className ="">Owner Booking History</label>
+            
+            </span>
+            {
+                vehicleDetails.length > 0 &&
+                (vehicleDetails || []).map((item, index) => (
+                    <div key={index}>
+                
+                        <GetVehicleToBook item ={item} index = {index} />
                     </div>
-                </div>
-            </div>
-        )
-    }
+                ))
+            }
+        </div>
+        {
+            vehicleDetails.length == 0 &&
+            <span className="ml-750x fs-30">No Booking History</span>
+        }
+    </div>
+)
 }
-
-export default CustomerBookingView;

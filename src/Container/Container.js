@@ -14,7 +14,7 @@ import Homepage from "./Homepage";
 import CustomerBookingView from "./CustomerBookingView";
 import CustomerProfile from "./CustomerProfile";
 import AddVehicle from "./AddVehicle";
-import SearchVehicle from "./SearchVehicle";
+import GetVehicleToBook from "./GetVehicleToBook";
 import BookingForm from "./BookingForm";
 import { Form } from "reactstrap";
 import OwnerLogin from "./OwnerLogin";
@@ -32,8 +32,7 @@ class Container extends Component{
                     <Route path='/ownerRegister' component={OwnerRegister}/>
                     <Route path='/customerLogin' component={CustomerLogin}/>
                     <Route path='/ownerLogin' component={OwnerLogin}/>
-                    <Route path='/logout' component={Logout}/>  
-                    <Route path='/searchVehicle' component={SearchVehicle}/>
+                    <Route path='/logout' component={Logout}/>                     
                     <Route path='/customerProfile' component={CustomerProfile}/>
                     <Route path='/CustomerSignup' component={CustomerSignup}/>
                     <Route path='/OwnerSignup' component={OwnerSignup}/>
@@ -43,6 +42,7 @@ class Container extends Component{
                     <Route path='/addVehicle' component={AddVehicle}/>
                     <Route path='/bookingForm' component={BookingForm}/>
                     <Route path='/loginPage' component={LoginPage}/>
+                    <Route path='/GetVehicleToBook' component={GetVehicleToBook}/>
                     {/*register vanne link aayo vane Register component call gar.*/}
                 </div>
             </div>

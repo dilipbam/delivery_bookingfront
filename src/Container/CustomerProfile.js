@@ -1,5 +1,10 @@
 import {Component} from "react";
-import ReactRoundedImage from "react-rounded-image";
+state={
+    UserName : "",
+    Contact : "",
+    Email : "",
+    id : this.props.match.params.id
+}
 
 class CustomerProfile extends Component{
     render(){
@@ -12,24 +17,17 @@ class CustomerProfile extends Component{
                             <form action="" method="post">
                                 <h4 className="modal-title font-weight-bold ">Update Profile</h4>
                                 <p className="text-center" style={{ float: "right" }}>
-                                    <ReactRoundedImage image={"http://localhost:90/" + this.state.photo} />
-
-                                    <input type="file" name="photo" className="form-control" onChange={this.fileHandler} style={{ marginTop: "10px" }} /></p>
-
-                                <p><input type="text" name="fullname" className="form-control" value={this.state.fullname}
+                                <p><input type="text" name="UserName" className="form-control" value={this.state.UserName}
                                     onChange={this.changeHandler} /></p>
 
-                                <p><input type="text" name="username" className="form-control" value={this.state.username}
-                                    onChange={this.changeHandler} /></p>
-
-                                <p><input type="text" name="contact" className="form-control" value={this.state.contact}
+                                <p><input type="text" name="Contact" className="form-control" value={this.state.Contact}
                                     onChange={this.changeHandler} disabled={true} /></p>
 
-                                <p><input type="text" name="email" className="form-control" value={this.state.email}
+                                <p><input type="text" name="Email" className="form-control" value={this.state.Email}
                                     onChange={this.changeHandler} /></p>
 
                                 <button className="btn btn-primary btn-block" onClick={this.updateUserData}>Update</button>
-                                {/* <input type="submit" className="btn btn-primary btn-block btn-lg" value="Login" onClick={this.submitLogin} /> */}
+                                </p>
                             </form>
 
                         </div>

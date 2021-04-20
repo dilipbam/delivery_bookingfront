@@ -15,10 +15,10 @@ class Header extends Component {
               </Link>
             </li>
           <li className="nav-item active">
-            <Link className="nav-link" to="/insert">Add Car</Link>
+            <Link className="nav-link" to="/GetVehicleToBook">Book Truck</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/show">View Car</Link>
+            <Link className="nav-link" to="/customerProfile">Profile</Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/CustomerBookingView">View Bookings</Link>
