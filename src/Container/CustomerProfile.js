@@ -1,10 +1,10 @@
-import {Component} from "react";
-state={
+import React, {Component} from "react";
+/* state={
     UserName : "",
     Contact : "",
     Email : "",
     id : this.props.match.params.id
-}
+} */
 
 class CustomerProfile extends Component{
     render(){

@@ -5,35 +5,34 @@ class Header extends Component {
   render() {
     {
       // alert(localStorage.getItem('token'))
-      if (localStorage.getItem('token') && localStorage.getItem('UserType')==='Customer') 
-      {
-        var menu = 
+      if (localStorage.getItem('token') && localStorage.getItem('userType')==='Customer') {
+
+        var menu =
+
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-              <Link className="nav-link" to="/">Home
-                        <span className="sr-only">(current)</span>
-              </Link>
-            </li>
-          <li className="nav-item active">
-            <Link className="nav-link" to="/GetVehicleToBook">Book Truck</Link>
+            <Link className="nav-link" to="/insert">Add Car</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/customerProfile">Profile</Link>
+            <Link className="nav-link" to="/show">View Car</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/CustomerBookingView">View Bookings</Link>
+            <Link className="nav-link" to="/adminViewBookings">View Bookings</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/viewCustomer">View Customer</Link>
           </li>
           <li className="nav-item">
               <Link className="nav-link" to="/logout">Log out</Link>
             </li>
         </ul>
+
       }
-      else if(localStorage.getItem('token') && localStorage.getItem('UserType')==='Owner') 
-      {
+      else if(localStorage.getItem('token') && localStorage.getItem('userType')==='Owner') {
        var menu =
           <ul className="navbar-nav ml-auto">
             <li className="nav-item active">
-              <Link className="nav-link" to="/">Home
+              <Link className="nav-link" to="/home">Home
                         <span className="sr-only">(current)</span>
               </Link>
             </li>
@@ -41,10 +40,10 @@ class Header extends Component {
               <Link className="nav-link" to="/about">About Us</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/AddVehicle">Add Vehicle</Link>
+              <Link className="nav-link" to="/services">Services</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/ownerBooking">Bookings</Link>
+              <Link className="nav-link" to="/viewBookings">Bookings</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/profile">Profile</Link>
@@ -54,23 +53,18 @@ class Header extends Component {
             </li>
           </ul>
       }
-      else 
-      {
+      else {
         var menu =
+
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item active">
-              <Link className="nav-link" to="/">Home
-                        <span className="sr-only">(current)</span>
-              </Link>
-            </li>
-            <li className="nav-item active">
+            <li className="nav-item">
               <Link className="nav-link" to="/about">About Us</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/register">Register</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/LoginPage">Login</Link>
+              <Link className="nav-link" to="/loginPage">Login</Link>
             </li>
           </ul>
       }
@@ -79,7 +73,7 @@ class Header extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark fixed-top bg-navbar">
         <div className="container">
-          <img style={{height:"50px"}} className="logo" src="TruckersNepal.png" alt="logo" />
+          <img style={{height:"50px"}} className="logo" src="/TruckersNepal.png" alt="logo" />
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
