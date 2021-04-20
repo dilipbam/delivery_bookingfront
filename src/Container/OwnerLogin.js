@@ -1,12 +1,12 @@
 import { Component, state, changeHandler, submitLogin } from "react";
 import axios from 'axios';
-import {Redirect} from 'react-router-dom';
 
-class Login extends Component{
+class OwnerLogin extends Component{
     state={
         username:"",
         password:"",
         checkLogin:false
+        
     }
     changeHandler = (e)=>{
         this.setState({
@@ -15,25 +15,33 @@ class Login extends Component{
     }
     submitLogin = (e)=>{
         e.preventDefault();
-        axios.post("http://localhost:90/customer/login", this.state)
-        .then((response)=>{
-            console.log(response);
-            localStorage.setItem('token', response.data.token)
-            localStorage.setItem('userType', response.data.userType)
-            localStorage.setItem('userName', response.data.userName)
-
-            this.setState({
-                checkLogin : true
+        console.log(this.state)
+        
+            axios.post("http://localhost:90/login1", this.state)
+            .then((response)=>{
+                console.log(response);
+                localStorage.setItem('token', response.data.token)
+                localStorage.setItem('userType', response.data.userType)            
+    
+                this.setState({
+                    checkLogin : true,
+                    success:response.data.success
+                })
             })
-        })
-        .catch((err)=>{
-            console.log(err.response)
-        })
-    }
+            .catch((err)=>{
+                console.log(err.response)
+            })
+              
+        }               
+    
     render(){
         if(this.state.checkLogin===true){
             //redirect to dashboard
             window.location.href="/home"
+        }
+        
+        else{
+            console.log('Please Login')
         }
         return(
 
@@ -65,4 +73,4 @@ class Login extends Component{
         )
     }
 }
-export default Login;
+export default OwnerLogin;

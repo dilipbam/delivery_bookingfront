@@ -1,7 +1,8 @@
 import { Component } from "react";
+import {BrowserRouter, Router, Link} from 'react-router-dom';
 import CustomerRegister from './CustomerRegister';
 import OwnerRegister from './OwnerRegister';
-import Login from './Login';
+import CustomerLogin from './CustomerLogin';
 import {Route} from 'react-router-dom';
 import Register from "./Register";
 import Logout from "./Logout";
@@ -15,6 +16,8 @@ import CustomerProfile from "./CustomerProfile";
 import AddVehicle from "./AddVehicle";
 import SearchVehicle from "./SearchVehicle";
 import BookingForm from "./BookingForm";
+import { Form } from "reactstrap";
+import OwnerLogin from "./OwnerLogin";
 
 class Container extends Component{
     render(){
@@ -25,7 +28,8 @@ class Container extends Component{
                     <Route path='/register' component={Register}/>
                     <Route path='/customerRegister' component={CustomerRegister}/>
                     <Route path='/ownerRegister' component={OwnerRegister}/>
-                    <Route path='/login' component={Login}/>
+                    <Route path='/customerLogin' component={CustomerLogin}/>
+                    <Route path='/ownerLogin' component={OwnerLogin}/>
                     <Route path='/logout' component={Logout}/>  
                     <Route path='/searchVehicle' component={SearchVehicle}/>
                     <Route path='/customerProfile' component={CustomerProfile}/>
