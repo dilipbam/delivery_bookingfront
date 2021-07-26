@@ -11,7 +11,7 @@ class Homepage extends Component {
                     <div className="container">
                         <div className="row vertical-align-middle mt-5 mb-5">
                             <div className="col-md-6">
-                                <h1 className="text-inverse">You can hire the available Trucks in order to pickup and drop your valuable goods from one place to another in cheap price and fast delivery</h1>
+                                <h1 className="text-inverse">You can hire the available Trucks in order to pickup and drop your valuable goods from one place to another in cheap price and fast delivery.</h1>
                             </div>
 
                         </div>
